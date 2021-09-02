@@ -1,3 +1,5 @@
+// Search function \\
+// **************** \\
 const searchBook = () => {
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
@@ -6,10 +8,13 @@ const searchBook = () => {
     const errorMassageField = document.getElementById('massage');
     errorMassageField.innerText = "";
     if (searchText === "") {
-
         const p = document.createElement('p');
         p.innerText = " Please input your book name.";
         errorMassageField.appendChild(p);
+
+        // previous search result clear 
+        const displayField = document.getElementById('display-result');
+        displayField.innerText = "";
     }
     else {
         loadData(searchText);
@@ -17,6 +22,8 @@ const searchBook = () => {
     searchField.value = "";
 }
 
+// Data load \\
+// ********** \\
 const loadData = (searchItem) => {
     const url = `https://openlibrary.org/search.json?q=${searchItem}`;
     fetch(url)
@@ -24,14 +31,20 @@ const loadData = (searchItem) => {
         .then(data => resultFound(data))
 }
 
-// Find Results 
+// Total Results found function \\
+// ***************************** \\
 const resultFound = (results) => {
-    // console.log(results);
+    
     const totalresult = document.getElementById('massage');
     if (results.numFound === 0) {
         const div = document.createElement('div');
         div.innerHTML = `<h3 class="text-danger">No result found (${results.numFound}) </h3>`;
         totalresult.appendChild(div);
+
+        // previous search result clear\\
+        const displayField = document.getElementById('display-result');
+        displayField.innerText = "";
+
     }
     else {
         const div = document.createElement('div');
@@ -41,17 +54,18 @@ const resultFound = (results) => {
     }
 }
 
+// Result display function \\
+// ************************ \\
 const displaySearchValue = (books) => {
-    console.log(books);
     const displayField = document.getElementById('display-result');
     displayField.innerText = "";
-        books.forEach(book => {
-            console.log(book)
-            if(book.cover_i === undefined){
-                
-            }
-            else{
-                const div = document.createElement('div');
+    books.forEach(book => {
+        console.log(book)
+        if (book.cover_i === undefined) {
+
+        }
+        else {
+            const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
                 <div class="card">
@@ -64,6 +78,6 @@ const displaySearchValue = (books) => {
                 </div>
             `
             displayField.appendChild(div);
-            }
-        })
+        }
+    })
 }
