@@ -9,10 +9,33 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
 <body>
-    <Section>
-        
+    <Section class="w-50 mx-auto my-4 text-center ">
+        <h1 class="text-primary"> Welcome to our Library</h1>
+        <div class="input-group my-4">
+            <input id="search-field" type="text" class="form-control" placeholder="search your book   e.g: javascript" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button onclick="loadBook()" class="btn btn-outline-secondary bg-info text-white" type="button" id="button-addon2">Search</button>
+          </div>
+          <div id="error-massage" class="text-danger"></div>
     </Section>
-    
+    <section>
+        <div id="display-result" class="row row-cols-1 row-cols-md-3 g-4">
+            
+          </div>
+    </section>
+
+    <!-- Bootstrap Script  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+    <!-- Custom Js  -->
     <script src="js/app.js"></script>
 </body>
 </html>
+         <!-- <div class="col">
+            <div class="card">
+                <img src="" class="card-img-top" alt="">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                </div>
+            </div>
+         </div> -->
