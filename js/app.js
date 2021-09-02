@@ -60,24 +60,18 @@ const displaySearchValue = (books) => {
     const displayField = document.getElementById('display-result');
     displayField.innerText = "";
     books.forEach(book => {
-        console.log(book)
-        if (book.cover_i === undefined) {
-
-        }
-        else {
-            const div = document.createElement('div');
-            div.classList.add('col');
-            div.innerHTML = `
-                <div class="card">
-                    <img class='img-fluid' src="https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" class="card-img-top" alt="">
-                    <div class="card-body">
-                      <h5 class="card-title">${book.title}</h5>
-                      <p class="card-text text-danger"> Author Name: ${book.author_name}</p>
-                      <p class="card-text text-danger"> First publish year: ${book.first_publish_year}</p>
-                    </div>
+        const div = document.createElement('div');
+        div.classList.add('col');
+        div.innerHTML = `
+            <div class="card">
+                <img class='img-fluid' src="https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" class="card-img-top" alt="">
+                <div class="card-body">
+                  <h5 class="card-title">${book.title}</h5>
+                  <h6 class="card-text">Author Name: <span class="text-danger">${book.author_name} </span> </h6>
+                  <p class="card-text"> First publish : ${book.first_publish_year}</p>
                 </div>
-            `
-            displayField.appendChild(div);
-        }
+            </div>
+        `
+        displayField.appendChild(div);
     })
 }
